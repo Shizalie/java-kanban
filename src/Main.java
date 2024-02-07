@@ -15,16 +15,26 @@ public class Main {
 
         taskManager.createTask(task1);
         taskManager.createTask(task2);
-        taskManager.createTask(epic1);
-        taskManager.createTask(subTask1);
-        taskManager.createTask(subTask2);
-        taskManager.createTask(epic2);
-        taskManager.createTask(subTask3);
+        taskManager.createEpic(epic1);
+        taskManager.createSubTask(subTask1);
+        taskManager.createSubTask(subTask2);
+        taskManager.createEpic(epic2);
+        taskManager.createSubTask(subTask3);
 
         // Print lists before status update
         System.out.println("Tasks before status update:");
         for(Task task : taskManager.getAllTasks()){
             System.out.println(task);
+        }
+
+        System.out.println("SubTasks before status update:");
+        for(SubTask subTask : taskManager.getAllSubTasks()){
+            System.out.println(subTask);
+        }
+
+        System.out.println("Epıcs before status update:");
+        for(Epic epic : taskManager.getAllEpics()){
+            System.out.println(epic);
         }
 
         // Update statuses
@@ -39,14 +49,34 @@ public class Main {
             System.out.println(task);
         }
 
+        System.out.println("SubTasks before status update:");
+        for(SubTask subTask : taskManager.getAllSubTasks()){
+            System.out.println(subTask);
+        }
+
+        System.out.println("Epıcs before status update:");
+        for(Epic epic : taskManager.getAllEpics()){
+            System.out.println(epic);
+        }
+
         // Remove a task and an epic
         taskManager.removeTaskById(task2.getId());
-        taskManager.removeTaskById(epic2.getId());
+        taskManager.removeEpicById(epic2.getId());
 
         // Print lists after removal
         System.out.println("\nTasks after removal:");
         for(Task task : taskManager.getAllTasks()){
             System.out.println(task);
+        }
+
+        System.out.println("SubTasks before status update:");
+        for(SubTask subTask : taskManager.getAllSubTasks()){
+            System.out.println(subTask);
+        }
+
+        System.out.println("Epıcs before status update:");
+        for(Epic epic : taskManager.getAllEpics()){
+            System.out.println(epic);
         }
     }
 }
