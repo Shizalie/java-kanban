@@ -2,12 +2,12 @@ import java.util.Objects;
 
 public class Task {
     protected final int id;
-    private String title;
-    private String description;
-    private Status status;
+    protected String title;
+    protected String description;
+    protected Status status;
 
     public Task(String title, String description) {
-        this.id = TaskManager.nextId++;
+        this.id = TaskManager.nextId;
         this.title = title;
         this.description = description;
         this.status = Status.NEW;

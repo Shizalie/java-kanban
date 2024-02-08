@@ -42,6 +42,7 @@ public class Main {
         subTask1.setStatus(Status.DONE);
         subTask2.setStatus(Status.DONE);
         taskManager.updateEpicStatus(epic1.getId());
+        taskManager.removeEpicById(epic1.getId());
 
         // Print lists after status update
         System.out.println("\nTasks after status update:");
