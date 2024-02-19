@@ -7,7 +7,7 @@ public class Task {
     protected Status status;
 
     public Task(String title, String description) {
-        this.id = TaskManager.nextId;
+        this.id = InMemoryTaskManager.nextId;
         this.title = title;
         this.description = description;
         this.status = Status.NEW;

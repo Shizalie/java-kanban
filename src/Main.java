@@ -1,7 +1,11 @@
 public class Main {
 
+    // Подскажите пожалуйста, у меня почему то перестали ID тасков корректно после того как
+    // Я сделал из класса TaskManager интерфейс и создал класс InMemoryTaskManager
+    // Что тут может быть не так ?
+    // У меня должно после "Tasks before status update:" отображаться все 8 тасков, а не 3...
     public static void main(String[] args) {
-        TaskManager taskManager = new TaskManager();
+        InMemoryTaskManager taskManager = new InMemoryTaskManager();
 
         Task task1 = new Task("Buy groceries", "Go to the supermarket and buy the necessary items");
         Task task2 = new Task("Clean the house", "Dust, vacuum, and mop the floors");
@@ -79,5 +83,7 @@ public class Main {
         for(Epic epic : taskManager.getAllEpics()){
             System.out.println(epic);
         }
+
+        System.out.println(taskManager.getHistory());
     }
 }
