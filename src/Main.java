@@ -25,6 +25,8 @@ public class Main {
         taskManager.createEpic(epic2);
         taskManager.createSubTask(subTask3);
 
+        taskManager.printAllTasks(taskManager);
+
         // Print lists before status update
         System.out.println("Tasks before status update:");
         for(Task task : taskManager.getAllTasks()){

@@ -1,13 +1,13 @@
 import java.util.Objects;
 
 public class Task {
-    protected final int id;
+    protected int id;
     protected String title;
     protected String description;
     protected Status status;
 
     public Task(String title, String description) {
-        this.id = InMemoryTaskManager.nextId;
+        this.id = id++;
         this.title = title;
         this.description = description;
         this.status = Status.NEW;
@@ -15,6 +15,10 @@ public class Task {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id){
+        this.id = id;
     }
 
     public String getTitle() {

@@ -1,7 +1,8 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public interface TaskManager {
-    ArrayList<Task> getAllTasks();
+    List<Task> getAllTasks();
 
     ArrayList<SubTask> getAllSubTasks();
 
@@ -47,4 +48,5 @@ public interface TaskManager {
     //=====================================================================
     ArrayList<Task>  getHistory();
 
+    void printAllTasks(TaskManager manager);
 }
