@@ -1,13 +1,12 @@
 import java.util.Objects;
 
 public class Task {
-    protected int id;
+    private int id;
     protected String title;
     protected String description;
-    protected Status status;
+    private Status status;
 
     public Task(String title, String description) {
-        this.id = id++;
         this.title = title;
         this.description = description;
         this.status = Status.NEW;
@@ -50,12 +49,15 @@ public class Task {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return id == task.id;
+        return id == task.id &&
+                Objects.equals(title, task.title) &&
+                Objects.equals(description, task.description) &&
+                status == task.status;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, title, description, status);
     }
 
     @Override

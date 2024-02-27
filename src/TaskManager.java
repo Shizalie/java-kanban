@@ -1,8 +1,7 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public interface TaskManager {
-    List<Task> getAllTasks();
+    ArrayList<Task> getAllTasks();
 
     ArrayList<SubTask> getAllSubTasks();
 
@@ -42,11 +41,6 @@ public interface TaskManager {
 
     void updateEpicStatus(int epicId);
 
-
-
-    //5-ый спринт
-    //=====================================================================
-    ArrayList<Task>  getHistory();
-
-    void printAllTasks(TaskManager manager);
 }
+
+
