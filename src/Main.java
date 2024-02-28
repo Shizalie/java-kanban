@@ -1,8 +1,9 @@
-package Tasks;
-
-import Managers.InMemoryHistoryManager;
-import Managers.InMemoryTaskManager;
-
+import managers.InMemoryHistoryManager;
+import managers.InMemoryTaskManager;
+import tasks.Epic;
+import tasks.Status;
+import tasks.SubTask;
+import tasks.Task;
 
 
 public class Main {

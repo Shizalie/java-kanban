@@ -1,9 +1,9 @@
-package Managers;
+package managers;
 
-import Tasks.Epic;
-import Tasks.Status;
-import Tasks.SubTask;
-import Tasks.Task;
+import tasks.Epic;
+import tasks.Status;
+import tasks.SubTask;
+import tasks.Task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public class InMemoryTaskManager implements TaskManager {
         this.tasks = new HashMap<>();
         this.subTasks = new HashMap<>();
         this.epics = new HashMap<>();
-        this.historyManager = new InMemoryHistoryManager();
+        this.historyManager =  Managers.getDefaultHistory();
     }
 
     @Override

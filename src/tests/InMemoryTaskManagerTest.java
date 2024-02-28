@@ -1,12 +1,11 @@
-package Tests;
+package tests;
 
-import Managers.InMemoryTaskManager;
-import Tasks.Epic;
-import Tasks.SubTask;
-import Tasks.Task;
+import managers.InMemoryTaskManager;
+import tasks.Epic;
+import tasks.SubTask;
+import tasks.Task;
 import org.junit.jupiter.api.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
