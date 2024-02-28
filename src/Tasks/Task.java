@@ -1,7 +1,9 @@
+package Tasks;
+
 import java.util.Objects;
 
 public class Task {
-    private int id;
+    protected int id;
     protected String title;
     protected String description;
     private Status status;
@@ -62,10 +64,10 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task ID: " + getId() +
+        return "Tasks.Task ID: " + getId() +
                 ", Title: " + getTitle() +
                 ", Description: " + getDescription() +
-                ", Status: " + getStatus();
+                ", Tasks.Status: " + getStatus();
     }
 }
 

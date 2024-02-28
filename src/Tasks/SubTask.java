@@ -1,4 +1,6 @@
-public class SubTask extends Task{
+package Tasks;
+
+public class SubTask extends Task {
     private final int epicId;
 
     public SubTask(int epicId, String title, String description) {

@@ -1,3 +1,7 @@
+package Tests;
+
+import Tasks.Status;
+import Tasks.Task;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,7 +26,7 @@ public class TaskTest {
     @Test
     void testToString() {
         Task task = new Task("Title", "Description");
-        assertEquals("Task ID: 0, Title: Title, Description: Description, Status: NEW", task.toString());
+        assertEquals("Tasks.Task ID: 0, Title: Title, Description: Description, Tasks.Status: NEW", task.toString());
     }
 
     @Test

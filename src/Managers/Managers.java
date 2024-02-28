@@ -1,13 +1,13 @@
-import java.util.ArrayList;
+package Managers;
 
 public class Managers {
 
-    TaskManager getDefault() {
+    public static TaskManager getDefault() {
         InMemoryTaskManager inMemoryTaskManager = new InMemoryTaskManager();
         return inMemoryTaskManager;
     }
 
-    static HistoryManager getDefaultHistory(){
+    public static HistoryManager getDefaultHistory(){
         HistoryManager inMemoryHistoryManager = new InMemoryHistoryManager();
         return inMemoryHistoryManager;
     }

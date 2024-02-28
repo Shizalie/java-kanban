@@ -1,9 +1,13 @@
+package Managers;
+
+import Tasks.Task;
+
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 
 public class InMemoryHistoryManager implements HistoryManager {
 
-    private final ArrayList<Task> storageOfViewedTasks;
+    private final List<Task> storageOfViewedTasks;
 
     public InMemoryHistoryManager() {
         this.storageOfViewedTasks = new ArrayList<>();
@@ -18,7 +22,7 @@ public class InMemoryHistoryManager implements HistoryManager {
     }
 
     @Override
-    public ArrayList<Task> getHistory() {
+    public List<Task> getHistory() {
         return storageOfViewedTasks;
     }
 }

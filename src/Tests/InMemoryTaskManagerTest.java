@@ -1,6 +1,13 @@
+package Tests;
+
+import Managers.InMemoryTaskManager;
+import Tasks.Epic;
+import Tasks.SubTask;
+import Tasks.Task;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -28,7 +35,7 @@ public class InMemoryTaskManagerTest {
     @Test
     void testCreateTask() {
         taskManager.createTask(task);
-        ArrayList<Task> allTasks = taskManager.getAllTasks();
+        List<Task> allTasks = taskManager.getAllTasks();
         assertEquals(1, allTasks.size());
         assertEquals(task, allTasks.get(0));
     }
@@ -38,7 +45,7 @@ public class InMemoryTaskManagerTest {
         taskManager.createEpic(epic);
         taskManager.updateEpicStatus(epic.getId());
         taskManager.createSubTask(subTask);
-        ArrayList<SubTask> allSubTasks = taskManager.getAllSubTasks();
+        List<SubTask> allSubTasks = taskManager.getAllSubTasks();
         assertEquals(1, allSubTasks.size());
         assertEquals(subTask, allSubTasks.get(0));
     }
@@ -46,7 +53,7 @@ public class InMemoryTaskManagerTest {
     @Test
     void testCreateEpic() {
         taskManager.createEpic(epic);
-        ArrayList<Epic> allEpics = taskManager.getAllEpics();
+        List<Epic> allEpics = taskManager.getAllEpics();
         assertEquals(1, allEpics.size());
         assertEquals(epic, allEpics.get(0));
     }
@@ -76,7 +83,7 @@ public class InMemoryTaskManagerTest {
     void testRemoveTaskById() {
         taskManager.createTask(task);
         taskManager.removeTaskById(task.getId());
-        ArrayList<Task> allTasks = taskManager.getAllTasks();
+        List<Task> allTasks = taskManager.getAllTasks();
         assertTrue(allTasks.isEmpty());
     }
 
@@ -84,7 +91,7 @@ public class InMemoryTaskManagerTest {
     void testRemoveSubTaskById() {
         taskManager.createSubTask(subTask);
         taskManager.removeSubTaskById(subTask.getId());
-        ArrayList<SubTask> allSubTasks = taskManager.getAllSubTasks();
+        List<SubTask> allSubTasks = taskManager.getAllSubTasks();
         assertTrue(allSubTasks.isEmpty());
     }
 
@@ -92,7 +99,7 @@ public class InMemoryTaskManagerTest {
     void testRemoveEpicById() {
         taskManager.createEpic(epic);
         taskManager.removeEpicById(epic.getId());
-        ArrayList<Epic> allEpics = taskManager.getAllEpics();
+        List<Epic> allEpics = taskManager.getAllEpics();
         assertTrue(allEpics.isEmpty());
     }
 

@@ -1,3 +1,10 @@
+package Tasks;
+
+import Managers.InMemoryHistoryManager;
+import Managers.InMemoryTaskManager;
+
+
+
 public class Main {
 
     public static void main(String[] args) {
@@ -45,7 +52,7 @@ public class Main {
         inMemoryTaskManager.getSubTaskById(11);
         inMemoryTaskManager.getSubTaskById(9);
 
-        for(Task task : inMemoryHistoryManager.getHistory()){
+        for(Task task : inMemoryTaskManager.getHistory()){
             System.out.println(task);
         }
 
