@@ -1,5 +1,7 @@
 package tests;
 
+import managers.HistoryManager;
+import managers.InMemoryHistoryManager;
 import managers.InMemoryTaskManager;
 import tasks.Epic;
 import tasks.SubTask;
@@ -11,13 +13,13 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class InMemoryTaskManagerTest {
+    static private Epic epic;
+    static private SubTask subTask;
+    static private Task task;
 
     static private InMemoryTaskManager taskManager;
-    static private Epic epic;
 
-    static private SubTask subTask;
-
-    static private Task task;
+    static private HistoryManager historyManager;
 
     @BeforeAll
     static void setUpBeforeAll() {
@@ -29,6 +31,7 @@ public class InMemoryTaskManagerTest {
     @BeforeEach
     void setUpBeforeEach(){
         taskManager = new InMemoryTaskManager();
+        historyManager = new InMemoryHistoryManager();
     }
 
     @Test
@@ -127,5 +130,61 @@ public class InMemoryTaskManagerTest {
         taskManager.updateEpic(epic);
         Epic updatedEpic = taskManager.getEpicById(epic.getId());
         assertEquals("Updated description", updatedEpic.getDescription());
+    }
+
+    @Test
+    void testAddTaskToHistory() {
+        Task task1 = new Task("Task 1", "Description 1");
+        Task task2 = new Task("Task 2", "Description 2");
+
+        taskManager.createTask(task1);
+        taskManager.createTask(task2);
+
+        historyManager.add(task1);
+        historyManager.add(task2);
+
+        List<Task> history = historyManager.getHistory();
+        assertEquals(2, history.size());
+        assertEquals(task1, history.get(0));
+        assertEquals(task2, history.get(1));
+    }
+
+    @Test
+    void testAddExistingTaskToHistory() {
+        Task task1 = new Task("Task 1", "Description 1");
+        Task task2 = new Task("Task 2", "Description 2");
+
+        taskManager.createTask(task1);
+        taskManager.createTask(task2);
+
+        historyManager.add(task1);
+        historyManager.add(task2);
+
+        Task task1Updated = new Task("Task 1 Updated", "Description 1 Updated");
+        task1Updated.setId(task1.getId());
+        historyManager.add(task1Updated);
+
+        List<Task> history = historyManager.getHistory();
+        assertEquals(2, history.size());
+        assertEquals(task1Updated, history.get(1));
+        assertEquals(task2, history.get(0));
+    }
+
+    @Test
+    void testRemoveTaskFromHistory() {
+        Task task1 = new Task("Task 1", "Description 1");
+        Task task2 = new Task("Task 2", "Description 2");
+
+        taskManager.createTask(task1);
+        taskManager.createTask(task2);
+
+        historyManager.add(task1);
+        historyManager.add(task2);
+
+        historyManager.remove(task1.getId());
+
+        List<Task> history = historyManager.getHistory();
+        assertEquals(1, history.size());
+        assertEquals(task2, history.get(0));
     }
 }
