@@ -53,11 +53,10 @@ public class Main {
         inMemoryTaskManager.getSubTaskById(11);
         inMemoryTaskManager.getSubTaskById(9);
 
+
         for(Task task : inMemoryTaskManager.getHistory()){
             System.out.println(task);
         }
-
-
 
         // Print lists before status update
         System.out.println("Tasks before status update:");
@@ -117,5 +116,6 @@ public class Main {
         for(Epic epic : inMemoryTaskManager.getAllEpics()){
             System.out.println(epic);
         }
+
     }
 }
