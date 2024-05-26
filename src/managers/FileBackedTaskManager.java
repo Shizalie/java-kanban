@@ -1,5 +1,6 @@
 package managers;
 
+import exceptions.ManagerSaveException;
 import tasks.Epic;
 import tasks.Status;
 import tasks.SubTask;
@@ -12,7 +13,7 @@ import java.io.IOException;
 import java.nio.file.*;
 
 
-public class FileBackedTaskManager extends InMemoryTaskManager implements TaskManager {
+public class FileBackedTaskManager extends InMemoryTaskManager {
 
     private final Path filePath;
 
@@ -39,7 +40,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager implements TaskMa
                 }
             }
         } catch (IOException e) {
-            throw new RuntimeException("Error saving tasks to file", e);
+            throw new ManagerSaveException("Error saving tasks to file", e);
         }
     }
 
@@ -61,7 +62,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager implements TaskMa
                 }
             }
         } catch (IOException e) {
-            throw new RuntimeException("Error loading tasks from file", e);
+            throw new ManagerSaveException("Error loading tasks from file", e);
         }
     }
 
@@ -172,6 +173,13 @@ public class FileBackedTaskManager extends InMemoryTaskManager implements TaskMa
     public void removeEpicById(int epicId) {
         super.removeEpicById(epicId);
         save();
+    }
+
+    // восстанавливать данные менеджера из файла при запуске программы
+    public static FileBackedTaskManager loadFromFile(File file) {
+        FileBackedTaskManager manager = new FileBackedTaskManager(file.getPath());
+        manager.loadFromFile();
+        return manager;
     }
 
     public static void main(String[] args) {
